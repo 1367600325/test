@@ -1,0 +1,12 @@
+# 应用名称
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/demo?serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  mapper-locations: classpath:com/cw/test/mapper/xml/*.xml  #配置mapper.xml文件位置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #sql日志

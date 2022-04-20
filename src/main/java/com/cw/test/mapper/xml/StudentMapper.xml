@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cw.test.mapper.StudentMapper">
+    
+    <resultMap id="studentCourse" type="com.cw.test.vo.StudentCourseVo">
+        <id column="student_id" property="id"/>
+        <result column="stud_name" property="studName"/>
+        <result column="sex" property="sex"/>
+        <result column="grade" property="grade"/>
+        <collection property="courseList" ofType="com.cw.test.entity.Course">
+            <id column="course_id" property="id"/>
+            <result column="course_name" property="courseName"/>
+            <result column="credit" property="credit"/>
+        </collection>
+
+    </resultMap>
+    
+    <select id="queryStudentCourse" resultMap="studentCourse">
+        select s.id as student_id,s.stud_name,s.sex,s.grade,c.id as course_id,c.course_name,c.credit from student s,student_course sc,course c where s.id=sc.student_id and c.id=sc.course_id and  s.id=#{id}
+    </select>
+
+</mapper>
